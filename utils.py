@@ -308,6 +308,9 @@ def converted_cellboxes(predictions, S=7):
     return converted_preds
 
 def cellboxes_to_boxes(out, S=7):
+    """
+    cell 비율로 맞춰서 있는 Bbox -> 전체 이미지 비율로 가공된 Bbox
+    """
     converted_pred = converted_cellboxes(out).reshape(out.shape[0], S * S, -1)
     converted_pred[..., 0] = converted_pred[..., 0].long()
     all_bboxes = []
