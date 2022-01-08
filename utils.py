@@ -227,6 +227,7 @@ def get_bboxes(loader, model, iou_threshold, threshold, pred_format="cells", box
     train_idx = 0
 
     for batch_idx, (x, labels) in enumerate(loader):
+        device = 'cuda' if torch.cuda.is_available() else 'cpu'
         x = x.to(device)
         labels = labels.to(device)
 
